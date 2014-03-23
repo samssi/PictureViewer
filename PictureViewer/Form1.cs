@@ -28,7 +28,7 @@ namespace PictureViewer
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 pictures = new Pictures(openFileDialog1.FileNames);
-                pictureBox1.Load(pictures.nextImage());
+                pictureBox1.Load(pictures.firstImage());
             }
         }
 
@@ -70,6 +70,16 @@ namespace PictureViewer
             {
                 pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
             }
+        }
+
+        private void nextButton_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Load(pictures.nextImage());
+        }
+
+        private void previousButton_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Load(pictures.previousImage());
         }
 
     }

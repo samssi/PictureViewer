@@ -20,20 +20,31 @@ namespace PictureViewer {
         }
 
         public String nextImage() {
-            if (fileNames.Count <= indexPosition++)
+            if (fileNames.Count > indexPosition+1)
             {
-                indexPosition = indexPosition++;
+                indexPosition += 1;
+                return fileNames[indexPosition];
             }
+            indexPosition = 0;
             return fileNames[indexPosition];
+            
         }
 
         public String previousImage()
         {
-            if (indexPosition-- > 0)
+            if (indexPosition > 0)
             {
-                indexPosition = indexPosition--;
+                indexPosition -= 1;
+                return fileNames[indexPosition];
             }
+            indexPosition = fileNames.Count() - 1;
             return fileNames[indexPosition];
+            
+        }
+        public String firstImage()
+        {
+            indexPosition = 0;
+            return fileNames[0];
         }
     }
 
